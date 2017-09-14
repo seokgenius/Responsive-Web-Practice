@@ -1,0 +1,337 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="green">
+    <meta name="Author" content="student">
+    <meta name="Keywords" content="html">
+    <meta name="Description" content="layout">
+    <meta name="viewport" content="width=device-width, 
+								 initial-scale=1, 
+								 minimum-scale=1, 
+								 maximum-scale=1, 
+								 user-scalable=no">
+    <title>Cafe J'slo</title>
+
+	<!-- Google Maps를 위한 javascript 시작 
+	
+	참고 링크 : https://developers.google.com/maps/documentation/javascript/adding-a-google-map?hl=ko
+	-->
+	<script>
+      function initMap() {
+        var uluru = {lat: 37.513000, lng: 127.052492}; // 37.513000, 127.052492
+        var map = new google.maps.Map(document.getElementById('contact_location'), {
+          zoom: 15,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFWucYfceeDbZXMThiKLhi0JJfaTz-uoY&callback=initMap">
+    </script>
+	<!-- Google Maps를 위한 javascript 끝 -->
+
+	<!-- carousel slide 삽입을 위한 javascript 시작 -->
+	<script type="text/javascript" 
+		src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript"		
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link	
+		href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+		  rel="stylesheet" type="text/css">
+	<!-- carousel slide 삽입을 위한 Javascript/CSS 끝 -->
+
+    <style>
+        	/* 
+        		1. 전체 글꼴 설정 
+        
+        		1) 전체 태그에 적용
+        		2) 글꼴 크기 : 2 뷰포트너비 단위 
+        		3) 문단 줄간격 : 4 뷰포트너비 단위 
+        		4) 글꼴 : consolas
+        	*/
+        
+        	*
+        	{
+        		font-size:2vw; 
+        		line-height:4vw;
+        		font-family:consolas;
+        	}
+        
+        	/* 
+        		2. 전체 레이아웃 
+        
+        		1) 너비 : 화면 꽉차게 구성
+        		2) 외부 간격(여백) : 0 
+        		3) 화면 대비 가로 중앙정렬
+        	*/
+        	#wrap
+        	{
+        		width:100%;
+        		margin:0 auto;
+        	}
+        
+        	/* 
+        		3.헤더(상단부) 
+        	
+        		1) 너비 : 100%
+        		2) 높이 : 50 뷰포트너비 단위
+        		3) 배경그림 : jslo_main.jpg 중앙배치 1번만 출력
+        		4) 배경 그림 크기 : 너비와 높이의 비율을 유지한 채,
+        		   해당 이미지 하나만으로 표시 영역을 "덮을 수"
+        		   있는 최소 크기로 표시됨.
+        		5) 외부 간격  : 0px
+        	*/
+        	header
+        	{
+        		width:100%;
+        		height:50vw;
+        		background:url('jslo_main.png') center no-repeat;
+        		background-size:cover; 
+        		margin:0;
+        	}
+        	
+        	/* 
+        		4. 메뉴(네비게이션) 
+        
+        		1) 높이 : 9 뷰포트너비 단위
+        		2) 배경색 : 오렌지
+        	*/
+        	nav
+        	{
+        		height:9vw;
+        		background:orange;
+        	}
+        
+        	/*  
+        		4-1. 메뉴(UL)
+        
+        		1) id : main_nav
+        		2) 리스트 스타일 : 불릿 아이콘 무표시
+        		3) 외부 여백 : 0PX
+        		4) 내부 간격 : 1 뷰포트너비 단위
+        
+        	*/
+        	#main_nav
+        	{
+        		list-style:none;
+        		margin:0;
+        		padding:1vw;
+        	}
+        
+        	/*  
+        		4-2. 메뉴(UL)의 항목들
+        
+        		1) 디스플레이 방식 : 인라인-블럭
+        		2) 색상 : 흰색
+        		3) 외부 여백 : 상하(1.5 뷰포트너비 단위) 
+        					   좌우(2 뷰포트너비 단위)
+        
+        	*/
+        	#main_nav li
+        	{
+        		display:inline-block;
+        		color:#fff;
+        		margin:1.5vw 2vw;
+        	}
+        
+        	/* 
+        		5. 추천 메뉴 : 요리 
+        
+        		1) 너비 : 화면 전체에서 10px 만큼을 빼고 적용 
+        		2) 높이 : 65 뷰포트너비 단위
+        		3) 외부 여백 : 0
+        	*/
+        	#dish
+        	{
+        		width:calc(100%-10px);
+        		height:65vw;
+        		margin:0;
+        	}
+        
+        	/* 
+        		6. 카페 소개(글) 및 영업시간(글) 
+        
+        		1) 외부 여백 : 0 
+        		2) 가로 중앙 정렬 
+        		3) 박스 크기 : 내부여백-박스
+        		4) 너비 : 100%
+        		5) 내부 여백 : 20픽셀
+        		6) 문단 줄간격 : 4.5 뷰포트너비 단위
+        		7) 글꼴 크기 : 2.5 뷰포트너비 단위
+        	*/
+        	.content
+        	{
+        		margin:0px auto;
+        		box-sizing:padding-box;
+        		width:100%;
+        		padding:20px;
+        		line-height:4.5vw;
+        		font-size:2.5vw;
+        	}
+        
+        	/* 
+        		7. 카페 소개 및 영업시간 : 배경색 및 글자 속성(굵기) 
+        	
+        		1) 배경색 : 오렌지
+        	*/
+        	#cafe_intro
+        	{
+        		background:orange;
+        	}
+        
+        	/* 
+        		8. 영업 시간
+        
+        		1) 배경색 : 노랑
+        		2) 글꼴 스타일 : 얇게
+        		3) 중앙정렬(너비/높이)
+        	*/
+        	#hour
+        	{
+        		background:yellow;
+        		font-weight:lighter;
+        
+        		display:flex;
+        		align-items:center;
+        		justify-content:center;
+        	}
+        
+        	/* 
+        		9. 오시는 길 : 위치(맵) 
+        
+        		1) 너비 : 화면 전체에서 10px 만큼을 빼고 적용
+        		2) 높이 : 60 뷰포트너비 단위
+        		3) 외부 간격 : 0
+        		4) 내부 간격 : 10픽셀
+        	*/
+        	#contact_location
+        	{
+        		width:calc(100%-10px);
+        		height:60vw;
+        		margin:0px;
+        		padding:10px;
+        	}
+        
+        	/* 
+        		10. 최하단(카페명) 
+        	
+        		1) 너비 : 100%;
+        		2) 높이 : 10 뷰포트너비 단위
+        		3) 배경색 : 회색
+        		4) 글꼴 스타일 : 굵게
+        		5) 중앙정렬(너비/높이)
+        	*/
+        	footer
+        	{
+        		width:100%;
+        		height:10vw;
+        		background:gray;
+        		color:white;
+        		font-weight:bold;
+        
+        		display:flex;
+        		align-items:center;
+        		justify-content:center;
+        	}
+    </style>
+  </head><body>
+    <!--전체 레이아웃 시작 -->
+    <div id="wrap">
+      <!-- 상단부(header) 시작 -->
+      <header>
+        <!-- 메뉴 시작 -->
+        <nav>
+          <ul id="main_nav">
+            <li>소개</li>
+            <li>메뉴</li>
+            <li>영업시간</li>
+            <li>연락처</li>
+          </ul>
+        </nav>
+        <!-- 메뉴 끝 -->
+      </header>
+      <!-- 상단부(header) 끝 -->
+      <!-- 카페 소개 시작 -->
+      <section id="cafe_intro" class="content">
+        <h1>CAFE J'SLO</h1>
+        <article>주소 서울 강남구 봉은사로 477 1층 제이슬로 카페
+		<br>지번 서울 강남구 삼성동 51-4
+		<br>전화 02-542-1073
+		<br>아메리카노 3,000
+		<br>그린티라떼 4,500</article>
+      </section>
+      <!-- 카페 소개 끝 -->
+      <!-- 영업 시간 시작 -->
+      <section id="hour" class="content">평일 : 07:00 - 21:00
+        <br>주말 : 08:00 - 22:00
+		</section>
+      <!-- 영업 시간 끝 -->
+      <!-- 추천 메뉴 시작 -->
+      <section id="dish">
+
+		 <!--carousel slide 시작 -->
+         <div id="fullcarousel-example" data-interval="false" class="carousel slide"
+			data-ride="carousel">
+			  <div class="carousel-inner">
+				<div class="item active">
+				  <img src="jslo_food1.png">
+				  <div class="carousel-caption">
+					<h2>아메리카노</h2>
+				  </div>
+				</div>
+				<div class="item">
+				  <img src="jslo_food2.png">
+				  <div class="carousel-caption">
+					<h3>견과류 쿠키 : 백년초 / 블루베리 / 녹차 / 감귤</h3>
+				  </div>
+				</div>
+				<div class="item">
+				  <img src="jslo_food3.png">
+				  <div class="carousel-caption">
+					<h2>Homemade Sandwich Set</h2>
+				  </div>
+				</div>
+			  </div>
+
+			  <!-- carousel slide 제어 메뉴 -->
+			<div style="position:absolute;top:30vw;left:3vw">
+			  <a class="left carousel-control" 
+				 href="#fullcarousel-example" 
+				 data-slide="prev">
+				  <i class="fa fa-toggle-left" 
+				     style="font-size:12vw"> 
+				  </i>
+			  </a>
+			</div>
+			<div style="position:absolute;top:30vw;left:82vw">
+			  <a class="right carousel-control" 
+				 href="#fullcarousel-example"	
+				 data-slide="next">
+				  <i class="fa fa-toggle-right"
+					 style="font-size:12vw">
+				  </i>
+			  </a>
+			</div>
+			</div>
+		 <!-- carousel slide 끝 -->
+      </section>
+      <!-- 추천 메뉴 끝 -->
+      <!-- 오시는 길(google map) 시작 -->
+      <section id="contact_location">
+	   
+	  </section>
+      <!-- 오시는 길(google map) 끝 -->
+
+      <!-- 최하단(카페이름) 시작 -->
+      <footer>CAFE J'SLO</footer>
+      <!-- 최하단(카페이름) 끝 -->
+
+    </div>
+    <!--전체 레이아웃 끝 -->
+
+</body></html>
